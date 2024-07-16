@@ -13,7 +13,7 @@ try:
         
         data = conn.recv(1024)
         while data:
-            print(data.decode())
+            print(data)
             data = conn.recv(1024)
 except KeyboardInterrupt:
     sock.close
