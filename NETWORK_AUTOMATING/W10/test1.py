@@ -2,7 +2,7 @@ import telnetlib
 
 username='cisco'
 password='cisco'
-IP='192.168.28.129'
+IP='192.168.190.136'
 
 tn = telnetlib.Telnet(IP)
 

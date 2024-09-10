@@ -1,13 +1,14 @@
 import telnetlib
+import os
 
 username='cisco'
 password='cisco'
 
-f = open('myswitches')
+f = open('myswitches.txt')
 
 for line in f:
     print("Configuring Switch " + (line))
-    IP = line
+    IP = line.strip()
     
     tn = telnetlib.Telnet(IP)
 
@@ -16,15 +17,15 @@ for line in f:
 
     if password:
         tn.read_until(b"Password: ")
-        tn.write(password.encode('ascii')+b"\n")
+        tn.write(password.encode('ascii') +b"\n")
 
     tn.write(b"conf t \n")
 
     for n in range (2,10):
-        tn.write(b"vlan "+ str(n).encode('ascii')+b"\n")
-        tn.write(b"name Python_VLAN_"+ str(n).encode('ascii')+b"\n")
+        tn.write(b"vlan " + str(n).encode('ascii') +b"\n")
+        tn.write(b"name Python_VLAN_" + str(n).encode('ascii')+b"\n")
 
     tn.write(b"end \n")
     tn.write(b"exit \n")
 
-    print(tn.read_all().decode(ascii))
+    print(tn.read_all().decode('ascii'))
