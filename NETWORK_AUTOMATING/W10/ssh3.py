@@ -18,7 +18,7 @@ f = open('')
 line = f.read().splitlines()
 print(line)
 
-all = [SW4, SW]
+all_devices = [SW4, SW]
 
 for devices in all_devices:
     net_connect = ConnectHandler(**devices)
